@@ -5,7 +5,7 @@ use JSON::Any;
 use Try::Tiny;
 use namespace::autoclean;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 BEGIN { extends 'Catalyst::Controller' }
 
@@ -34,7 +34,6 @@ has 'full_paths' => (
 has 'filter' => (
 	is      => 'ro',
 	isa     => 'RegexpRef',
-	default => sub { qr/.*/ },
 );
 
 has 'data_root' => (
@@ -60,12 +59,14 @@ sub list :Chained('setup') PathPart('') :Args {
 
 	try {
 		opendir (my $dir, $full_path) or die;
-		$files = [ grep { !/$regexp/ } readdir $dir ];
+		$files = [ readdir $dir ];
 		closedir $dir;
 	} catch {
 		$c->stash->{response} = {"error" => "Failed to open directory '$full_path'", "success" => JSON::Any::false};
 		$c->detach('serialize');
 	};
+
+	$files = [ grep { !/$regexp/ } @$files ] if ($regexp);
 
 	$files = [ map { "$path/$_" } @$files ] if ($self->full_paths);
 
@@ -120,6 +121,22 @@ Catalyst::Controller::DirectoryDispatch - A controller for browsing system direc
 =head1 DESCRIPTION
 
 Provides a simple configuration based controller for listing local system directories and dispatching them as URLs.
+
+=head2 Example Usage
+
+If you created the controller at http://localhost/mydir and set root to '/home/user1' then browsing to the controller might give the following output:
+
+	{
+		"success":true,
+		"data":[
+			"file1",
+			"file2",
+			"dir1",
+			"dir2"
+		],
+	}
+
+You could then point your browser to http://localhost/mydir/dir1 to get a directory listing of the folder '/home/user1/dir1' and so on...
 
 =head2 Changing Views
 
