@@ -1,0 +1,23 @@
+---
+abstract: 'Simple directory listing with built in url dispatching'
+author:
+  - 'Andy Gorman <agorman@cpan.org>'
+build_requires:
+  English: 0
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.31
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.101670'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Catalyst-Controller-DirectoryDispatch
+requires:
+  Catalyst::Controller: 0
+  JSON::Any: 0
+  Moose: 0
+  Try::Tiny: 0
+  namespace::autoclean: 0
+version: 0.01
