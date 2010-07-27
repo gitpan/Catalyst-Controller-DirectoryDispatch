@@ -1,0 +1,3 @@
+0.03      2010-07-27 14:34:59 America/Los_Angeles
+Fixed failing tests do to requiring Catalyst::Plugin::Static::Simple.
+Cleaned up some POD errors.

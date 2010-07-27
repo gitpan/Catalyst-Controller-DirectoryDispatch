@@ -5,8 +5,6 @@ use JSON::Any;
 use Try::Tiny;
 use namespace::autoclean;
 
-our $VERSION = '0.02';
-
 BEGIN { extends 'Catalyst::Controller' }
 
 __PACKAGE__->config(
@@ -161,10 +159,12 @@ If you need to process the files in anyway before they're passed to the view you
 
 	sub process_files {
 		my ($c, $files) = @_;
-		
+
 		foreach my $file ( @$files ) {
-			# Do stuff...
+			# Modify $file
 		}
+
+		return $files;
 	}
 
 This is the last thing that happens before the list of files are passed on to the view. $files is sent in as an ArrayRef[Str] but you
@@ -176,13 +176,13 @@ are free to return any thing you want as long as the serializer you're using can
 
 	is: ro, isa: Str
 
-The folder that will be listed when accessing the controller.
+The folder that will be listed when accessing the controller (default '/').
 
 =head2 filter
 
 	is: ro, isa: RegexpRef
 
-A regular expression that will remove matching files or folders from the directory listing. 
+A regular expression that will remove matching files or folders from the directory listing (default: undef).
 
 =head2 data_root
 
@@ -194,11 +194,7 @@ The name of the key inside $c->stash->{response} where the directory listing wil
 
 	is: ro, isa: Bool
 
-Returns full paths for the directory listing rather than just the names.
-
-=head1 TODO
-
-Write tests
+Returns full paths for the directory listing rather than just the names (default: 0).
 
 =head1 AUTHOR
 

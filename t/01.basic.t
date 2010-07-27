@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use Test::More tests => 14;
-use Data::Dumper;
+#use Data::Dumper;
 
 use FindBin;
 use lib "$FindBin::Bin/lib";
@@ -20,9 +20,6 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 	opendir my $dir, ".";
 	my $files = [ readdir $dir ];
 	closedir $dir;
-	
-	print Dumper $files;
-	print Dumper $response;
 	
 	is_deeply( $response, { data => $files, success => 'true' }, 'correct message returned' );
 }
@@ -46,9 +43,6 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 	opendir my $dir, ".";
 	my $files = [ grep { !/^\./ } readdir $dir ];
 	closedir $dir;
-	
-	print Dumper $files;
-	print Dumper $response;
 	
 	is_deeply( $response, { data => $files, success => 'true' }, 'correct message returned' );
 }

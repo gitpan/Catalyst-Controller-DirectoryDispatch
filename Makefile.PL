@@ -14,7 +14,6 @@ my %WriteMakefileArgs = (
   'BUILD_REQUIRES' => {
     'Catalyst' => '0',
     'Catalyst::Runtime' => '5.80',
-    'Data::Dumper' => '0',
     'English' => '0',
     'FindBin' => '0',
     'Test::More' => '0',
@@ -34,7 +33,7 @@ my %WriteMakefileArgs = (
     'Try::Tiny' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }

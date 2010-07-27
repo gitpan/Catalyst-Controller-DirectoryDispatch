@@ -5,7 +5,6 @@ author:
 build_requires:
   Catalyst: 0
   Catalyst::Runtime: 5.80
-  Data::Dumper: 0
   English: 0
   FindBin: 0
   Test::More: 0
@@ -25,4 +24,4 @@ requires:
   Moose: 0
   Try::Tiny: 0
   namespace::autoclean: 0
-version: 0.02
+version: 0.03

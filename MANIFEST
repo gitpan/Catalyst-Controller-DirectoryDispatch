@@ -1,3 +1,4 @@
+Changes
 LICENSE
 MANIFEST
 META.yml
@@ -13,3 +14,4 @@ t/lib/TestDirectoryDispatch/Controller/DataRoot.pm
 t/lib/TestDirectoryDispatch/Controller/Filter.pm
 t/lib/TestDirectoryDispatch/Controller/FullPaths.pm
 t/lib/TestDirectoryDispatch/Controller/Process.pm
+t/release-pod-syntax.t
