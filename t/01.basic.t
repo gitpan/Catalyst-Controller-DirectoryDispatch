@@ -1,15 +1,15 @@
-#!/usr/bin/perl
+use 5.6.0;
+
 use strict;
 use warnings;
 
+use lib 't/lib';
+
 use Test::More tests => 14;
-#use Data::Dumper;
-
-use FindBin;
-use lib "$FindBin::Bin/lib";
-use lib "$FindBin::Bin/../lib";
-
+use JSON::Any;
 use Test::WWW::Mechanize::Catalyst 'TestDirectoryDispatch';
+
+
 my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 

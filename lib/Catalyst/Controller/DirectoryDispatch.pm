@@ -68,7 +68,7 @@ sub list :Chained('setup') PathPart('') :Args {
 
 	$files = [ map { "$path/$_" } @$files ] if ($self->full_paths);
 
-	$files = $self->process_files($files);
+	$files = $self->process_files($c, $files);
 
 	$c->stash->{response}->{$self->data_root} = $files;
 	$c->stash->{response}->{success} = JSON::Any::true;
@@ -76,7 +76,7 @@ sub list :Chained('setup') PathPart('') :Args {
 
 
 sub process_files {
-	my ( $c, $files ) = @_;
+	my ( $self, $c, $files ) = @_;
 	
 	return $files;
 }
@@ -158,7 +158,7 @@ Then in your template...
 If you need to process the files in anyway before they're passed to the view you can override process_files in your controller.
 
 	sub process_files {
-		my ($c, $files) = @_;
+		my ($self, $c, $files) = @_;
 
 		foreach my $file ( @$files ) {
 			# Modify $file

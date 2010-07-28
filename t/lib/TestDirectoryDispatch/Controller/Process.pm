@@ -11,7 +11,7 @@ __PACKAGE__->config(
 
 
 sub process_files {
-	my ( $c, $files ) = @_;
+	my ( $self, $c, $files ) = @_;
 	
 	return [ map { "Andy was here: $_" } @$files ];
 }
