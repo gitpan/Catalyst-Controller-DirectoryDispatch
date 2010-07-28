@@ -15,7 +15,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 # Test basic operation
 {
-	$mech->get_ok('/basic');
+	$mech->get_ok('/base/basic');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, ".";
 	my $files = [ readdir $dir ];
@@ -26,7 +26,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 
 {
-	$mech->get_ok('/basic/lib');
+	$mech->get_ok('/base/basic/lib');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, "lib";
 	my $files = [ readdir $dir ];
@@ -38,7 +38,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 # Test using a filter
 {
-	$mech->get_ok('/filter');
+	$mech->get_ok('/base/filter');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, ".";
 	my $files = [ grep { !/^\./ } readdir $dir ];
@@ -50,7 +50,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 # Test changing data_root
 {
-	$mech->get_ok('/dataroot');
+	$mech->get_ok('/base/dataroot');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, ".";
 	my $files = [ readdir $dir ];
@@ -62,7 +62,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 # Test returning full paths
 {
-	$mech->get_ok('/fullpaths');
+	$mech->get_ok('/base/fullpaths');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, ".";
 	my $files = [ readdir $dir ];
@@ -75,7 +75,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 
 {
-	$mech->get_ok('/fullpaths/lib');
+	$mech->get_ok('/base/fullpaths/lib');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, "lib";
 	my $files = [ readdir $dir ];
@@ -88,7 +88,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 
 # Test post processing
 {
-	$mech->get_ok('/process');
+	$mech->get_ok('/base/process');
 	my $response = JSON::Any->Load( $mech->content );
 	opendir my $dir, ".";
 	my $files = [ readdir $dir ];

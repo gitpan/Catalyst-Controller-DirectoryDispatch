@@ -30,4 +30,4 @@ requires:
   Test::WWW::Mechanize::Catalyst: 0.37
   Try::Tiny: 0
   namespace::autoclean: 0
-version: 0.04
+version: 0.05

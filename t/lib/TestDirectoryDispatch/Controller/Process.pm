@@ -5,7 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller::DirectoryDispatch' }
 
 __PACKAGE__->config(
-	action => { setup => { Chained => '', PathPart => 'process' } }, # define parent chain action and partpath
+	action => { setup => { Chained => '/base', PathPart => 'process' } }, # define parent chain action and partpath
 	root       => '.',
 );
 

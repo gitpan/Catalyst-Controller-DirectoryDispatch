@@ -14,4 +14,5 @@ t/lib/TestDirectoryDispatch/Controller/DataRoot.pm
 t/lib/TestDirectoryDispatch/Controller/Filter.pm
 t/lib/TestDirectoryDispatch/Controller/FullPaths.pm
 t/lib/TestDirectoryDispatch/Controller/Process.pm
+t/lib/TestDirectoryDispatch/Controller/Root.pm
 t/release-pod-syntax.t

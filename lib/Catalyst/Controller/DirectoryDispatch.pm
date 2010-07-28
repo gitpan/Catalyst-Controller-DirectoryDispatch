@@ -1,11 +1,12 @@
-# ABSTRACT: Simple directory listing with built in url dispatching
 package Catalyst::Controller::DirectoryDispatch;
+# ABSTRACT: Simple directory listing with built in url dispatching
+
 use Moose;
+BEGIN { extends 'Catalyst::Controller' }
+
 use JSON::Any;
 use Try::Tiny;
 use namespace::autoclean;
-
-BEGIN { extends 'Catalyst::Controller' }
 
 __PACKAGE__->config(
     'default'   => 'application/json',
@@ -41,10 +42,10 @@ has 'data_root' => (
 );
 
 
-sub setup :Chained('specify.in.subclass.config') :CaptureArgs :PathPart('specify.in.subclass.config') {}
+sub setup :Chained('specify.in.subclass.config') :CaptureArgs(0) :PathPart('specify.in.subclass.config') {}
 
 
-sub list :Chained('setup') PathPart('') :Args {
+sub list :Chained('setup') :PathPart('') :Args {
 	my $self = shift;
 	my $c = shift;
 
@@ -202,7 +203,7 @@ Andy Gorman, agorman@cpan.org
 
 =head1 THANKS
 
-The design for this modules was heavly influenced by the fantastic L<Catalyst::Controller::DBIC::API>.
+The design for this module was heavly influenced by the fantastic L<Catalyst::Controller::DBIC::API>.
 
 =head1 COPYRIGHT AND LICENSE
 
